@@ -1,0 +1,25 @@
+{
+    "name": "PurposeType",
+    "fields": [
+        {
+            "fieldName": "purposeTypeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "purposeTypeDescription",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200114031717",
+    "entityTableName": "purpose_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "cdsdataservice",
+    "applications": "*",
+    "microserviceName": "cdsdataservice"
+}

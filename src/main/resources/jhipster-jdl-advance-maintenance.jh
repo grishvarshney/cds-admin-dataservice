@@ -1,0 +1,6 @@
+
+entity PurposeType {
+	purposeTypeCode String
+    purposeTypeDescription String
+}
+
