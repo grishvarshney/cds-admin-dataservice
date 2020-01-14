@@ -1,0 +1,21 @@
+{
+    "name": "Systems",
+    "fields": [
+        {
+            "fieldName": "systemsEntity",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200114020405",
+    "entityTableName": "systems",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "cdsdataservice",
+    "applications": "*",
+    "microserviceName": "cdsdataservice"
+}

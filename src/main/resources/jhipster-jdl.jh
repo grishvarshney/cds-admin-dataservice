@@ -1,0 +1,45 @@
+entity Customer {
+    customerName String
+}
+
+entity Systems {
+	systemsEntity String
+}
+
+entity Note {
+    noteNo String,
+	industry String,
+    effectiveDate LocalDate,
+    instrumentType String
+}
+
+entity Merger {
+	effectiveDate LocalDate,
+    customerFrom Long,
+    customerTo Long,
+    action String,
+    mergingEntity String,
+    timeStamp ZonedDateTime
+}
+
+entity Transfer {
+	effectiveDate LocalDate,
+    customerFrom Long,
+    customerTo Long,
+    action String,
+    transferringEntity String,
+    timeStamp ZonedDateTime
+}
+
+relationship OneToOne {
+	Customer{system} to Systems
+}
+
+relationship OneToMany {
+	Customer to Note{customer}
+}
+
+relationship OneToMany {
+	Note to Merger{note},
+    Note to Transfer{note}
+}
