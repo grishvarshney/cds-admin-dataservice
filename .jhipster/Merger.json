@@ -1,0 +1,49 @@
+{
+    "name": "Merger",
+    "fields": [
+        {
+            "fieldName": "effectiveDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "customerFrom",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "customerTo",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "action",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mergingEntity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timeStamp",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "note",
+            "otherEntityRelationshipName": "merger",
+            "relationshipName": "note",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200114020407",
+    "entityTableName": "merger",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "cdsdataservice",
+    "applications": "*",
+    "microserviceName": "cdsdataservice"
+}
