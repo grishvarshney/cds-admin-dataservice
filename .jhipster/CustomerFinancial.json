@@ -1,0 +1,69 @@
+{
+    "name": "CustomerFinancial",
+    "fields": [
+        {
+            "fieldName": "customerNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "toatlAsset",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "cmpFlag",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "mtg14FamilyAmt",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "totalRFHA",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "mvaPercentage",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "capitalCompliantLevel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "watchStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creditScore",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "watchStatusEffectiveDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "totalEligibileCollateralAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "securityEligibileCollateralAmount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200114171044",
+    "entityTableName": "customer_financial",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "cdsdataservice",
+    "applications": "*",
+    "microserviceName": "cdsdataservice"
+}
