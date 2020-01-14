@@ -1,0 +1,53 @@
+{
+    "name": "Note",
+    "fields": [
+        {
+            "fieldName": "noteNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "industry",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "effectiveDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "instrumentType",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "merger",
+            "otherEntityRelationshipName": "note",
+            "relationshipName": "merger"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "transfer",
+            "otherEntityRelationshipName": "note",
+            "relationshipName": "transfer"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "customer",
+            "otherEntityRelationshipName": "note",
+            "relationshipName": "customer",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200114020406",
+    "entityTableName": "note",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "cdsdataservice",
+    "applications": "*",
+    "microserviceName": "cdsdataservice"
+}
