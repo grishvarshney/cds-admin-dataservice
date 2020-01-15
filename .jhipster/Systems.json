@@ -6,7 +6,22 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "merger",
+            "otherEntityRelationshipName": "systems",
+            "relationshipName": "merger",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "transfer",
+            "otherEntityRelationshipName": "systems",
+            "relationshipName": "transfer",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20200114020405",
     "entityTableName": "systems",
     "dto": "no",

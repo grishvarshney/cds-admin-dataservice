@@ -42,6 +42,9 @@ public class Merger implements Serializable {
     @OneToMany(mappedBy = "merger")
     private Set<Note> notes = new HashSet<>();
 
+    @OneToMany(mappedBy = "merger")
+    private Set<Systems> systems = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -152,6 +155,31 @@ public class Merger implements Serializable {
 
     public void setNotes(Set<Note> notes) {
         this.notes = notes;
+    }
+
+    public Set<Systems> getSystems() {
+        return systems;
+    }
+
+    public Merger systems(Set<Systems> systems) {
+        this.systems = systems;
+        return this;
+    }
+
+    public Merger addSystems(Systems systems) {
+        this.systems.add(systems);
+        systems.setMerger(this);
+        return this;
+    }
+
+    public Merger removeSystems(Systems systems) {
+        this.systems.remove(systems);
+        systems.setMerger(null);
+        return this;
+    }
+
+    public void setSystems(Set<Systems> systems) {
+        this.systems = systems;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
