@@ -9,39 +9,24 @@
         <property name="autoIncrement" value="true"/>
 
     <!--
-        Added the entity Note.
+        Added the entity PurposeType.
     -->
-    <changeSet id="20200114020406-1" author="jhipster">
-        <createTable tableName="note">
+    <changeSet id="20200114031717-1" author="jhipster">
+        <createTable tableName="purpose_type">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="note_no" type="varchar(255)">
+            <column name="purpose_type_code" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="industry" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="effective_date" type="date">
-                <constraints nullable="true" />
-            </column>
-            <column name="instrument_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="customer_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="merger_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="transfer_id" type="bigint">
+            <column name="purpose_type_description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
 
-    <changeSet id="20200114020406-1-relations" author="jhipster">
+    <changeSet id="20200114031717-1-relations" author="jhipster">
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
@@ -54,16 +39,14 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20200114020406-1-data" author="jhipster" context="faker">
+    <changeSet id="20200114031717-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/note.csv"
+                  file="config/liquibase/fake-data/purpose_type.csv"
                   separator=";"
-                  tableName="note">
+                  tableName="purpose_type">
             <column name="id" type="numeric"/>
-            <column name="note_no" type="string"/>
-            <column name="industry" type="string"/>
-            <column name="effective_date" type="date"/>
-            <column name="instrument_type" type="string"/>
+            <column name="purpose_type_code" type="string"/>
+            <column name="purpose_type_description" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

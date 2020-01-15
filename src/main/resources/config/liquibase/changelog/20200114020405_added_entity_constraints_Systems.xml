@@ -4,25 +4,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
     <!--
-        Added the constraints for entity Note.
+        Added the constraints for entity Systems.
     -->
-    <changeSet id="20200114020406-2" author="jhipster">
+    <changeSet id="20200114020405-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="customer_id"
-                                 baseTableName="note"
-                                 constraintName="fk_note_customer_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="customer"/>
-
         <addForeignKeyConstraint baseColumnNames="merger_id"
-                                 baseTableName="note"
-                                 constraintName="fk_note_merger_id"
+                                 baseTableName="systems"
+                                 constraintName="fk_systems_merger_id"
                                  referencedColumnNames="id"
                                  referencedTableName="merger"/>
 
         <addForeignKeyConstraint baseColumnNames="transfer_id"
-                                 baseTableName="note"
-                                 constraintName="fk_note_transfer_id"
+                                 baseTableName="systems"
+                                 constraintName="fk_systems_transfer_id"
                                  referencedColumnNames="id"
                                  referencedTableName="transfer"/>
 

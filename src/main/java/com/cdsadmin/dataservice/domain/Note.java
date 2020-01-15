@@ -5,8 +5,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Note.
@@ -33,15 +31,17 @@ public class Note implements Serializable {
     @Column(name = "instrument_type")
     private String instrumentType;
 
-    @OneToMany(mappedBy = "note")
-    private Set<Merger> mergers = new HashSet<>();
-
-    @OneToMany(mappedBy = "note")
-    private Set<Transfer> transfers = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties("notes")
     private Customer customer;
+
+    @ManyToOne
+    @JsonIgnoreProperties("notes")
+    private Merger merger;
+
+    @ManyToOne
+    @JsonIgnoreProperties("notes")
+    private Transfer transfer;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -104,56 +104,6 @@ public class Note implements Serializable {
         this.instrumentType = instrumentType;
     }
 
-    public Set<Merger> getMergers() {
-        return mergers;
-    }
-
-    public Note mergers(Set<Merger> mergers) {
-        this.mergers = mergers;
-        return this;
-    }
-
-    public Note addMerger(Merger merger) {
-        this.mergers.add(merger);
-        merger.setNote(this);
-        return this;
-    }
-
-    public Note removeMerger(Merger merger) {
-        this.mergers.remove(merger);
-        merger.setNote(null);
-        return this;
-    }
-
-    public void setMergers(Set<Merger> mergers) {
-        this.mergers = mergers;
-    }
-
-    public Set<Transfer> getTransfers() {
-        return transfers;
-    }
-
-    public Note transfers(Set<Transfer> transfers) {
-        this.transfers = transfers;
-        return this;
-    }
-
-    public Note addTransfer(Transfer transfer) {
-        this.transfers.add(transfer);
-        transfer.setNote(this);
-        return this;
-    }
-
-    public Note removeTransfer(Transfer transfer) {
-        this.transfers.remove(transfer);
-        transfer.setNote(null);
-        return this;
-    }
-
-    public void setTransfers(Set<Transfer> transfers) {
-        this.transfers = transfers;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
@@ -165,6 +115,32 @@ public class Note implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Merger getMerger() {
+        return merger;
+    }
+
+    public Note merger(Merger merger) {
+        this.merger = merger;
+        return this;
+    }
+
+    public void setMerger(Merger merger) {
+        this.merger = merger;
+    }
+
+    public Transfer getTransfer() {
+        return transfer;
+    }
+
+    public Note transfer(Transfer transfer) {
+        this.transfer = transfer;
+        return this;
+    }
+
+    public void setTransfer(Transfer transfer) {
+        this.transfer = transfer;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

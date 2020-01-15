@@ -34,9 +34,6 @@
             <column name="time_stamp" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="note_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="transfer" columnName="time_stamp" columnDataType="datetime"/>

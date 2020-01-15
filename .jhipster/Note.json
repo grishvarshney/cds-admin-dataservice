@@ -20,22 +20,24 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "merger",
-            "otherEntityRelationshipName": "note",
-            "relationshipName": "merger"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "transfer",
-            "otherEntityRelationshipName": "note",
-            "relationshipName": "transfer"
-        },
-        {
             "relationshipType": "many-to-one",
             "otherEntityName": "customer",
             "otherEntityRelationshipName": "note",
             "relationshipName": "customer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "merger",
+            "otherEntityRelationshipName": "note",
+            "relationshipName": "merger",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "transfer",
+            "otherEntityRelationshipName": "note",
+            "relationshipName": "transfer",
             "otherEntityField": "id"
         }
     ],

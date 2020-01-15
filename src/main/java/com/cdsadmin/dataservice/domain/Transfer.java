@@ -1,11 +1,12 @@
 package com.cdsadmin.dataservice.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Transfer.
@@ -38,9 +39,11 @@ public class Transfer implements Serializable {
     @Column(name = "time_stamp")
     private ZonedDateTime timeStamp;
 
-    @ManyToOne
-    @JsonIgnoreProperties("transfers")
-    private Note note;
+    @OneToMany(mappedBy = "transfer")
+    private Set<Note> notes = new HashSet<>();
+
+    @OneToMany(mappedBy = "transfer")
+    private Set<Systems> systems = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -129,17 +132,54 @@ public class Transfer implements Serializable {
         this.timeStamp = timeStamp;
     }
 
-    public Note getNote() {
-        return note;
+    public Set<Note> getNotes() {
+        return notes;
     }
 
-    public Transfer note(Note note) {
-        this.note = note;
+    public Transfer notes(Set<Note> notes) {
+        this.notes = notes;
         return this;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public Transfer addNote(Note note) {
+        this.notes.add(note);
+        note.setTransfer(this);
+        return this;
+    }
+
+    public Transfer removeNote(Note note) {
+        this.notes.remove(note);
+        note.setTransfer(null);
+        return this;
+    }
+
+    public void setNotes(Set<Note> notes) {
+        this.notes = notes;
+    }
+
+    public Set<Systems> getSystems() {
+        return systems;
+    }
+
+    public Transfer systems(Set<Systems> systems) {
+        this.systems = systems;
+        return this;
+    }
+
+    public Transfer addSystems(Systems systems) {
+        this.systems.add(systems);
+        systems.setTransfer(this);
+        return this;
+    }
+
+    public Transfer removeSystems(Systems systems) {
+        this.systems.remove(systems);
+        systems.setTransfer(null);
+        return this;
+    }
+
+    public void setSystems(Set<Systems> systems) {
+        this.systems = systems;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

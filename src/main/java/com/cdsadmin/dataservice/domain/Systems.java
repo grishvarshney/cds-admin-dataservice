@@ -1,4 +1,5 @@
 package com.cdsadmin.dataservice.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -20,6 +21,14 @@ public class Systems implements Serializable {
     @Column(name = "systems_entity")
     private String systemsEntity;
 
+    @ManyToOne
+    @JsonIgnoreProperties("systems")
+    private Merger merger;
+
+    @ManyToOne
+    @JsonIgnoreProperties("systems")
+    private Transfer transfer;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -40,6 +49,32 @@ public class Systems implements Serializable {
 
     public void setSystemsEntity(String systemsEntity) {
         this.systemsEntity = systemsEntity;
+    }
+
+    public Merger getMerger() {
+        return merger;
+    }
+
+    public Systems merger(Merger merger) {
+        this.merger = merger;
+        return this;
+    }
+
+    public void setMerger(Merger merger) {
+        this.merger = merger;
+    }
+
+    public Transfer getTransfer() {
+        return transfer;
+    }
+
+    public Systems transfer(Transfer transfer) {
+        this.transfer = transfer;
+        return this;
+    }
+
+    public void setTransfer(Transfer transfer) {
+        this.transfer = transfer;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

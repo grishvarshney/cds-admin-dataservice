@@ -1,0 +1,22 @@
+
+entity PurposeType {
+	purposeTypeCode String
+    purposeTypeDescription String
+}
+
+entity CustomerFinancial {
+	customerNumber String
+    toatlAsset Double
+    cmpFlag String
+    updateDate LocalDate
+    mtg14FamilyAmt Double
+    totalRFHA Double
+    mvaPercentage Double
+    capitalCompliantLevel String
+    watchStatus String
+    creditScore Double
+    watchStatusEffectiveDate LocalDate
+    totalEligibileCollateralAmount Double
+    securityEligibileCollateralAmount Double
+}
+
