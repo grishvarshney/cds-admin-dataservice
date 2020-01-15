@@ -14,5 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="customer"/>
 
+        <addForeignKeyConstraint baseColumnNames="merger_id"
+                                 baseTableName="note"
+                                 constraintName="fk_note_merger_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="merger"/>
+
+        <addForeignKeyConstraint baseColumnNames="transfer_id"
+                                 baseTableName="note"
+                                 constraintName="fk_note_transfer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transfer"/>
+
     </changeSet>
 </databaseChangeLog>

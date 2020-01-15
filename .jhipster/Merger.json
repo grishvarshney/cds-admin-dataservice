@@ -28,11 +28,10 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "one-to-many",
             "otherEntityName": "note",
             "otherEntityRelationshipName": "merger",
-            "relationshipName": "note",
-            "otherEntityField": "id"
+            "relationshipName": "note"
         }
     ],
     "changelogDate": "20200114020407",

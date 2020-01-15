@@ -1,11 +1,12 @@
 package com.cdsadmin.dataservice.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Merger.
@@ -38,9 +39,8 @@ public class Merger implements Serializable {
     @Column(name = "time_stamp")
     private ZonedDateTime timeStamp;
 
-    @ManyToOne
-    @JsonIgnoreProperties("mergers")
-    private Note note;
+    @OneToMany(mappedBy = "merger")
+    private Set<Note> notes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -129,17 +129,29 @@ public class Merger implements Serializable {
         this.timeStamp = timeStamp;
     }
 
-    public Note getNote() {
-        return note;
+    public Set<Note> getNotes() {
+        return notes;
     }
 
-    public Merger note(Note note) {
-        this.note = note;
+    public Merger notes(Set<Note> notes) {
+        this.notes = notes;
         return this;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public Merger addNote(Note note) {
+        this.notes.add(note);
+        note.setMerger(this);
+        return this;
+    }
+
+    public Merger removeNote(Note note) {
+        this.notes.remove(note);
+        note.setMerger(null);
+        return this;
+    }
+
+    public void setNotes(Set<Note> notes) {
+        this.notes = notes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
