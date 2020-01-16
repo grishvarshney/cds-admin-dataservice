@@ -115,12 +115,11 @@ public class NoteResource {
     @GetMapping("/getNotesByCustomer/{id}")
     public  List<Note> getNotesByCustomer(@PathVariable Long id) {
         log.debug("REST request to get Note : {}", id);
-        Optional<Merger> m = mergerRepo.findById(id);
         List<Merger> mergers = mergerRepo.findByCustomerFromOrCustomerTo(id, id);
         List<Note> notes = new ArrayList<Note>();
         for(Merger merger : mergers) {
-        	List<Note> noteByMerger = noteRepository.findByMerger(m.get());
-        	notes.addAll(noteByMerger);
+        	//List<Note> noteByMerger = noteRepository.findByMerger(merger);
+        	notes.addAll(noteRepository.findByMerger(merger));
         }
         return notes;
     }
