@@ -1,11 +1,12 @@
 package com.cdsadmin.dataservice.repository;
 
 import com.cdsadmin.dataservice.domain.Merger;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 
 /**
@@ -14,5 +15,9 @@ import java.util.Optional;
 @SuppressWarnings("unused")
 @Repository
 public interface MergerRepository extends JpaRepository<Merger, Long> {
-    List<Merger> findByCustomerFromOrCustomerTo(Long customerFrom, Long customerTo);
+    @Query(value = "SELECT * FROM Merger m WHERE  ( m.CUSTOMER_FROM  = :customerFrom or m.CUSTOMER_TO = :customerTo ) and m.SYSTEMS_ID  = :SystemId ",
+        nativeQuery = true)
+    List<Merger> findByCustomerFromOrCustomerTo(@Param("customerFrom") String customerFrom,
+                                                @Param("customerTo") String customerTo,
+                                                @Param("SystemId") String SystemId);
 }

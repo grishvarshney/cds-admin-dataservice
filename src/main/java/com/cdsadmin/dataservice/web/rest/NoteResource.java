@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +39,7 @@ public class NoteResource {
     private String applicationName;
 
     private final NoteRepository noteRepository;
-
+    
     @Autowired
     MergerRepository mergerRepo;
 
@@ -112,6 +112,17 @@ public class NoteResource {
         return ResponseUtil.wrapOrNotFound(note);
     }
 
+    @GetMapping("/getNotesByCustomer/{id}")
+    public  List<Note> getNotesByCustomer(@PathVariable Long id) {
+        log.debug("REST request to get Note : {}", id);
+        List<Merger> mergers = mergerRepo.findByCustomerFromOrCustomerTo(id, id);
+        List<Note> notes = new ArrayList<Note>();
+        for(Merger merger : mergers) {
+        	//List<Note> noteByMerger = noteRepository.findByMerger(merger);
+        	notes.addAll(noteRepository.findByMerger(merger));
+        }
+        return notes;
+    }
 
     @GetMapping("/getNotesByMerger/{id}")
     public  List<Note> getNotesByMerger(@PathVariable Long id) {

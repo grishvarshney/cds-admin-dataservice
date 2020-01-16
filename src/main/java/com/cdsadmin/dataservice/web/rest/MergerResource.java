@@ -63,8 +63,9 @@ public class MergerResource {
         Merger result = mergerRepository.save(merger);
         Set<Note> notes = merger.getNotes();
         for(Note note:notes) {
-        	note.setMerger(merger);
-        	Note noteResult = noteRepository.save(note);
+        	Optional<Note> noteFromId = noteRepository.findById(note.getId());
+        	noteFromId.get().setMerger(merger);
+        	Note noteResult = noteRepository.save(noteFromId.get());
         }
         return ResponseEntity.created(new URI("/api/mergers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
@@ -117,10 +118,11 @@ public class MergerResource {
         return ResponseUtil.wrapOrNotFound(merger);
     }
 
-    @GetMapping("/mergersByCustFromOrTo/{id}")
-    public List<Merger> getMergersByCustFromOrTo(@PathVariable Long id) {
-        log.debug("REST request to get Merger : {}", id);
-        return mergerRepository.findByCustomerFromOrCustomerTo(id, id);
+    @GetMapping("/mergersByCustFromOrTo/{customerId}/{systemId}")
+    public List<Merger> getMergersByCustFromOrTo(@PathVariable("customerId") String customerId,
+                                                 @PathVariable("systemId") String systemId ) {
+        log.debug("REST request to get Merger : {}", systemId);
+        return mergerRepository.findByCustomerFromOrCustomerTo(customerId, customerId, systemId);
     }
 
     /**
