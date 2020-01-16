@@ -40,8 +40,11 @@ relationship OneToMany {
 }
 
 relationship OneToMany {
+	Systems to Merger{systems},
+	Systems to Transfer{systems}
+}
+
+relationship OneToMany {
 	Merger to Note{merger},
-    Transfer to Note{transfer},
-    Merger to Systems{merger},
-    Transfer to Systems{transfer}
+    Transfer to Note{transfer}
 }
