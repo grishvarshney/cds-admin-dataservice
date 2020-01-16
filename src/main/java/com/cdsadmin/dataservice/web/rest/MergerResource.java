@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -39,7 +39,7 @@ public class MergerResource {
     private String applicationName;
 
     private final MergerRepository mergerRepository;
-    
+
     @Autowired
     private NoteRepository noteRepository;
 
@@ -115,6 +115,12 @@ public class MergerResource {
         log.debug("REST request to get Merger : {}", id);
         Optional<Merger> merger = mergerRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(merger);
+    }
+
+    @GetMapping("/mergersByCustFromOrTo/{id}")
+    public List<Merger> getMergersByCustFromOrTo(@PathVariable Long id) {
+        log.debug("REST request to get Merger : {}", id);
+        return mergerRepository.findByCustomerFromOrCustomerTo(id, id);
     }
 
     /**
