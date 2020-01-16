@@ -118,10 +118,11 @@ public class MergerResource {
         return ResponseUtil.wrapOrNotFound(merger);
     }
 
-    @GetMapping("/mergersByCustFromOrTo/{id}")
-    public List<Merger> getMergersByCustFromOrTo(@PathVariable Long id) {
-        log.debug("REST request to get Merger : {}", id);
-        return mergerRepository.findByCustomerFromOrCustomerTo(id, id);
+    @GetMapping("/mergersByCustFromOrTo/{customerId}/{systemId}")
+    public List<Merger> getMergersByCustFromOrTo(@PathVariable("customerId") String customerId,
+                                                 @PathVariable("systemId") String systemId ) {
+        log.debug("REST request to get Merger : {}", systemId);
+        return mergerRepository.findByCustomerFromOrCustomerTo(customerId, customerId, systemId);
     }
 
     /**
