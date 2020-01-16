@@ -1,11 +1,11 @@
-id;note_no;industry;effective_date;instrument_type
-1;productivity Dynamic;Walk Savings Account;2020-01-13;framework
-2;Electronics reboot envisioneer;clicks-and-mortar Assistant drive;2020-01-13;e-commerce teal
-3;Human supply-chains;hacking;2020-01-13;Handmade silver Architect
-4;Virginia heuristic;navigate;2020-01-13;Ford envisioneer
-5;RAM;Human;2020-01-13;Hat Chicken
-6;Focused Streamlined;Costa Rican Colon;2020-01-13;deposit
-7;Drives Handcrafted;invoice;2020-01-13;Architect channels
-8;Gorgeous Steel Hat static;Ergonomic Generic Concrete Computer Montana;2020-01-13;Isle
-9;Neck salmon;Avon;2020-01-13;Frozen Paraguay orchid
-10;matrix Cheese;leading-edge deposit;2020-01-13;Crossroad Belize Dollar
+id;note_no;industry;effective_date;instrument_type;merger_id
+1;productivity Dynamic;Walk Savings Account;2020-01-13;framework;2
+2;Electronics reboot envisioneer;clicks-and-mortar Assistant drive;2020-01-13;e-commerce teal;2
+3;Human supply-chains;hacking;2020-01-13;Handmade silver Architect;3
+4;Virginia heuristic;navigate;2020-01-13;Ford envisioneer;3
+5;RAM;Human;2020-01-13;Hat Chicken;1
+6;Focused Streamlined;Costa Rican Colon;2020-01-13;deposit;1
+7;Drives Handcrafted;invoice;2020-01-13;Architect channels;1
+8;Gorgeous Steel Hat static;Ergonomic Generic Concrete Computer Montana;2020-01-13;Isle;1
+9;Neck salmon;Avon;2020-01-13;Frozen Paraguay orchid;1
+10;matrix Cheese;leading-edge deposit;2020-01-13;Crossroad Belize Dollar;1

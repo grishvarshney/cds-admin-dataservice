@@ -1,16 +1,20 @@
 package com.cdsadmin.dataservice.web.rest;
 
+import com.cdsadmin.dataservice.domain.Merger;
 import com.cdsadmin.dataservice.domain.Note;
+import com.cdsadmin.dataservice.repository.MergerRepository;
 import com.cdsadmin.dataservice.repository.NoteRepository;
 import com.cdsadmin.dataservice.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.h2.command.dml.Merge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -35,6 +39,9 @@ public class NoteResource {
     private String applicationName;
 
     private final NoteRepository noteRepository;
+
+    @Autowired
+    MergerRepository mergerRepo;
 
     public NoteResource(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
@@ -105,6 +112,14 @@ public class NoteResource {
         return ResponseUtil.wrapOrNotFound(note);
     }
 
+
+    @GetMapping("/getNotesByMerger/{id}")
+    public  List<Note> getNotesByMerger(@PathVariable Long id) {
+        log.debug("REST request to get Note : {}", id);
+        Optional<Merger> m = mergerRepo.findById(id);
+        List<Note> note = noteRepository.findByMerger(m.get());
+        return note;
+    }
     /**
      * {@code DELETE  /notes/:id} : delete the "id" note.
      *
