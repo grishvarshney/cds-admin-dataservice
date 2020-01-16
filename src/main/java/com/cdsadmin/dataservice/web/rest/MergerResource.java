@@ -1,16 +1,13 @@
 package com.cdsadmin.dataservice.web.rest;
 
 import com.cdsadmin.dataservice.domain.Merger;
-import com.cdsadmin.dataservice.domain.Note;
 import com.cdsadmin.dataservice.repository.MergerRepository;
-import com.cdsadmin.dataservice.repository.NoteRepository;
 import com.cdsadmin.dataservice.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional; 
@@ -21,7 +18,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * REST controller for managing {@link com.cdsadmin.dataservice.domain.Merger}.
@@ -39,9 +35,6 @@ public class MergerResource {
     private String applicationName;
 
     private final MergerRepository mergerRepository;
-    
-    @Autowired
-    private NoteRepository noteRepository;
 
     public MergerResource(MergerRepository mergerRepository) {
         this.mergerRepository = mergerRepository;
@@ -61,11 +54,6 @@ public class MergerResource {
             throw new BadRequestAlertException("A new merger cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Merger result = mergerRepository.save(merger);
-        Set<Note> notes = merger.getNotes();
-        for(Note note:notes) {
-        	note.setMerger(merger);
-        	Note noteResult = noteRepository.save(note);
-        }
         return ResponseEntity.created(new URI("/api/mergers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);

@@ -34,10 +34,11 @@
             "relationshipName": "note"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-one",
             "otherEntityName": "systems",
             "otherEntityRelationshipName": "transfer",
-            "relationshipName": "systems"
+            "relationshipName": "systems",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20200114020408",
