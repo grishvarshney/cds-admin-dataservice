@@ -8,18 +8,16 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "one-to-many",
             "otherEntityName": "merger",
             "otherEntityRelationshipName": "systems",
-            "relationshipName": "merger",
-            "otherEntityField": "id"
+            "relationshipName": "merger"
         },
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "one-to-many",
             "otherEntityName": "transfer",
             "otherEntityRelationshipName": "systems",
-            "relationshipName": "transfer",
-            "otherEntityField": "id"
+            "relationshipName": "transfer"
         }
     ],
     "changelogDate": "20200114020405",

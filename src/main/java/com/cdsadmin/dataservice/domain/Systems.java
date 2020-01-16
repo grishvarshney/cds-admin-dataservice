@@ -1,9 +1,10 @@
 package com.cdsadmin.dataservice.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Systems.
@@ -21,13 +22,11 @@ public class Systems implements Serializable {
     @Column(name = "systems_entity")
     private String systemsEntity;
 
-    @ManyToOne
-    @JsonIgnoreProperties("systems")
-    private Merger merger;
+    @OneToMany(mappedBy = "systems")
+    private Set<Merger> mergers = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("systems")
-    private Transfer transfer;
+    @OneToMany(mappedBy = "systems")
+    private Set<Transfer> transfers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -51,30 +50,54 @@ public class Systems implements Serializable {
         this.systemsEntity = systemsEntity;
     }
 
-    public Merger getMerger() {
-        return merger;
+    public Set<Merger> getMergers() {
+        return mergers;
     }
 
-    public Systems merger(Merger merger) {
-        this.merger = merger;
+    public Systems mergers(Set<Merger> mergers) {
+        this.mergers = mergers;
         return this;
     }
 
-    public void setMerger(Merger merger) {
-        this.merger = merger;
-    }
-
-    public Transfer getTransfer() {
-        return transfer;
-    }
-
-    public Systems transfer(Transfer transfer) {
-        this.transfer = transfer;
+    public Systems addMerger(Merger merger) {
+        this.mergers.add(merger);
+        merger.setSystems(this);
         return this;
     }
 
-    public void setTransfer(Transfer transfer) {
-        this.transfer = transfer;
+    public Systems removeMerger(Merger merger) {
+        this.mergers.remove(merger);
+        merger.setSystems(null);
+        return this;
+    }
+
+    public void setMergers(Set<Merger> mergers) {
+        this.mergers = mergers;
+    }
+
+    public Set<Transfer> getTransfers() {
+        return transfers;
+    }
+
+    public Systems transfers(Set<Transfer> transfers) {
+        this.transfers = transfers;
+        return this;
+    }
+
+    public Systems addTransfer(Transfer transfer) {
+        this.transfers.add(transfer);
+        transfer.setSystems(this);
+        return this;
+    }
+
+    public Systems removeTransfer(Transfer transfer) {
+        this.transfers.remove(transfer);
+        transfer.setSystems(null);
+        return this;
+    }
+
+    public void setTransfers(Set<Transfer> transfers) {
+        this.transfers = transfers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
