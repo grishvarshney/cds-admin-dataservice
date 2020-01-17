@@ -1,11 +1,11 @@
-id;effective_date;customer_from;customer_to;action;merging_entity;time_stamp
-1;2020-01-13;53133;29895;Checking Account Home Loan Account function;Jewelery;2020-01-13T11:43:24
-2;2020-01-13;88693;82440;yellow Fantastic;back up e-tailers;2020-01-13T05:27:40
-3;2020-01-13;70577;90932;invoice Antigua and Barbuda programming;bypass Borders Shoes;2020-01-13T03:36:34
-4;2020-01-13;37378;54699;GB Money Market Account;protocol conglomeration;2020-01-13T15:59:43
-5;2020-01-13;78912;2431;models;web services optical;2020-01-13T07:17:10
-6;2020-01-13;32981;50772;Liaison Ghana ivory;Liaison mint green reinvent;2020-01-13T08:30:45
-7;2020-01-13;42583;88146;green enable Borders;Marshall Islands;2020-01-13T21:45:31
-8;2020-01-13;30793;32944;Cameroon object-oriented Philippines;stable;2020-01-13T17:57:27
-9;2020-01-13;17814;23345;payment 1080p;sky blue Investment Account;2020-01-13T08:23:32
-10;2020-01-13;36733;65671;Tasty Sausages;engineer;2020-01-13T22:01:41
+id;effective_date;customer_from;customer_to;action;merging_entity;time_stamp;systems_id
+1;2020-01-13;1;2;Checking Account Home Loan Account function;Jewelery;2020-01-13T11:43:24;1
+2;2020-01-13;2;3;yellow Fantastic;back up e-tailers;2020-01-13T05:27:40;1
+3;2020-01-13;3;4;invoice Antigua and Barbuda programming;bypass Borders Shoes;2020-01-13T03:36:34;1
+4;2020-01-13;4;5;GB Money Market Account;protocol conglomeration;2020-01-13T15:59:43;1
+5;2020-01-13;5;6;models;web services optical;2020-01-13T07:17:10;1
+6;2020-01-13;6;7;Liaison Ghana ivory;Liaison mint green reinvent;2020-01-13T08:30:45;1
+7;2020-01-13;7;8;green enable Borders;Marshall Islands;2020-01-13T21:45:31;1
+8;2020-01-13;8;1;Cameroon object-oriented Philippines;stable;2020-01-13T17:57:27;1
+9;2020-01-13;1;3;payment 1080p;sky blue Investment Account;2020-01-13T08:23:32;1
+10;2020-01-13;3;5;Tasty Sausa   ges;engineer;2020-01-13T22:01:41;1

@@ -1,11 +1,11 @@
-id;effective_date;customer_from;customer_to;action;transferring_entity;time_stamp
-1;2020-01-13;21160;41066;Solutions Congolese Franc Fish;Orchestrator robust Mouse;2020-01-13T04:28:29
-2;2020-01-13;87984;34492;upward-trending;Avon;2020-01-13T05:13:38
-3;2020-01-13;79605;98986;implement;Handmade Cotton Hat;2020-01-13T09:52:38
-4;2020-01-13;531;53627;Wooden Avon Yemeni Rial;open-source Books withdrawal;2020-01-13T16:55:27
-5;2020-01-13;13413;95806;Harbors Diverse wireless;neural-net invoice synergy;2020-01-13T16:24:53
-6;2020-01-13;23029;73834;projection Music turquoise;Investment Account blue Intuitive;2020-01-13T16:52:51
-7;2020-01-13;56710;89632;Garden Borders Fundamental;Metal cyan;2020-01-14T01:54:08
-8;2020-01-13;77605;466;Soft paradigms;programming expedite Intelligent Metal Chicken;2020-01-14T00:23:23
-9;2020-01-14;13595;45960;tan hacking Oregon;Towels Home Squares;2020-01-13T13:29:06
-10;2020-01-13;51068;4727;transmitter;West Virginia Chips;2020-01-13T09:12:20
+id;effective_date;customer_from;customer_to;action;transferring_entity;time_stamp;systems_id
+1;2020-01-13;1;2;Solutions Congolese Franc Fish;Orchestrator robust Mouse;2020-01-13T04:28:29;1
+2;2020-01-13;2;3;upward-trending;Avon;2020-01-13T05:13:38;1
+3;2020-01-13;3;4;implement;Handmade Cotton Hat;2020-01-13T09:52:38;1
+4;2020-01-13;4;5;Wooden Avon Yemeni Rial;open-source Books withdrawal;2020-01-13T16:55:27;1
+5;2020-01-13;5;6;Harbors Diverse wireless;neural-net invoice synergy;2020-01-13T16:24:53;1
+6;2020-01-13;7;8;projection Music turquoise;Investment Account blue Intuitive;2020-01-13T16:52:51;1
+7;2020-01-13;8;9;Garden Borders Fundamental;Metal cyan;2020-01-14T01:54:08;1
+8;2020-01-13;9;10;Soft paradigms;programming expedite Intelligent Metal Chicken;2020-01-14T00:23:23;1
+9;2020-01-14;13595;45960;tan hacking Oregon;Towels Home Squares;2020-01-13T13:29:06;1
+10;2020-01-13;51068;4727;transmitter;West Virginia Chips;2020-01-13T09:12:20;1

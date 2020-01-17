@@ -1,5 +1,6 @@
 package com.cdsadmin.dataservice.web.rest;
 
+import com.cdsadmin.dataservice.domain.Merger;
 import com.cdsadmin.dataservice.domain.Transfer;
 import com.cdsadmin.dataservice.repository.TransferRepository;
 import com.cdsadmin.dataservice.web.rest.errors.BadRequestAlertException;
@@ -10,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -117,4 +118,13 @@ public class TransferResource {
         transferRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+
+
+    @GetMapping("/transfersByCustFromOrTo/{customerId}/{systemId}")
+    public List<Transfer> getTransfersByCustFromOrTo(@PathVariable("customerId") String customerId,
+                                                 @PathVariable("systemId") String systemId ) {
+        log.debug("REST request to get Transfer : {}", systemId);
+        return transferRepository.findByCustomerFromOrCustomerTo(customerId, customerId, systemId);
+    }
+
 }

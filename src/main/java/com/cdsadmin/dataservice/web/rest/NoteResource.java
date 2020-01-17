@@ -2,8 +2,10 @@ package com.cdsadmin.dataservice.web.rest;
 
 import com.cdsadmin.dataservice.domain.Merger;
 import com.cdsadmin.dataservice.domain.Note;
+import com.cdsadmin.dataservice.domain.Transfer;
 import com.cdsadmin.dataservice.repository.MergerRepository;
 import com.cdsadmin.dataservice.repository.NoteRepository;
+import com.cdsadmin.dataservice.repository.TransferRepository;
 import com.cdsadmin.dataservice.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -42,6 +44,9 @@ public class NoteResource {
 
     @Autowired
     MergerRepository mergerRepo;
+
+    @Autowired
+    TransferRepository transferRepo;
 
     public NoteResource(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
@@ -131,5 +136,13 @@ public class NoteResource {
         log.debug("REST request to delete Note : {}", id);
         noteRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/getNotesByTransfer/{id}")
+    public  List<Note> getNotesByTransfer(@PathVariable Long id) {
+        log.debug("REST request to get Note : {}", id);
+        Optional<Transfer> m = transferRepo.findById(id);
+        List<Note> note = noteRepository.findByTransfer(m.get());
+        return note;
     }
 }
