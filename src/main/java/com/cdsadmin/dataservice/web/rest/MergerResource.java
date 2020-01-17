@@ -63,8 +63,9 @@ public class MergerResource {
         Merger result = mergerRepository.save(merger);
         Set<Note> notes = merger.getNotes();
         for(Note note:notes) {
-        	note.setMerger(merger);
-        	Note noteResult = noteRepository.save(note);
+        	Optional<Note> noteFromId = noteRepository.findById(note.getId());
+        	noteFromId.get().setMerger(merger);
+        	Note noteResult = noteRepository.save(noteFromId.get());
         }
         return ResponseEntity.created(new URI("/api/mergers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
@@ -123,6 +124,21 @@ public class MergerResource {
         log.debug("REST request to get Merger : {}", systemId);
         return mergerRepository.findByCustomerFromOrCustomerTo(customerId, customerId, systemId);
     }
+
+    @GetMapping("/mergersByCustTo/{customerId}/{systemId}")
+    public List<Merger> mergersByCustTo(@PathVariable("customerId") String customerId,
+                                                 @PathVariable("systemId") String systemId ) {
+        log.debug("REST request to get Merger : {}", systemId);
+        return mergerRepository.findByCustomerTo(customerId, systemId);
+    }
+
+    @GetMapping("/mergersByCustFrom/{customerId}/{systemId}")
+    public List<Merger> mergersByCustFrom(@PathVariable("customerId") String customerId,
+                                                 @PathVariable("systemId") String systemId ) {
+        log.debug("REST request to get Merger : {}", systemId);
+        return mergerRepository.findByCustomerFrom(customerId, systemId);
+    }
+
 
     /**
      * {@code DELETE  /mergers/:id} : delete the "id" merger.

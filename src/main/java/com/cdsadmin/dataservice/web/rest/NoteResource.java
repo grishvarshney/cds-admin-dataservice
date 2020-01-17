@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -115,6 +115,32 @@ public class NoteResource {
         log.debug("REST request to get Note : {}", id);
         Optional<Note> note = noteRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(note);
+    }
+
+    @GetMapping("/getNotesByCustomerTo/{customerId}/{systemId}")
+    public  List<Note> getNotesByCustomerTo(@PathVariable String customerId, @PathVariable String systemId) {
+        log.debug("REST request to get Note : {}", customerId);
+        //List<Merger> mergers = mergerRepo.findByCustomerFromOrCustomerTo(customerId, customerId, systemId);
+        List<Merger> mergers = mergerRepo.findByCustomerTo(customerId, systemId);
+        List<Note> notes = new ArrayList<Note>();
+        for(Merger merger : mergers) {
+            //List<Note> noteByMerger = noteRepository.findByMerger(merger);
+            notes.addAll(noteRepository.findByMerger(merger));
+        }
+        return notes;
+    }
+
+    @GetMapping("/getNotesByCustomerFrom/{customerId}/{systemId}")
+    public  List<Note> getNotesByCustomerFrom(@PathVariable String customerId, @PathVariable String systemId) {
+        log.debug("REST request to get Note : {}", customerId);
+        //List<Merger> mergers = mergerRepo.findByCustomerFromOrCustomerTo(customerId, customerId, systemId);
+        List<Merger> mergers = mergerRepo.findByCustomerFrom(customerId, systemId);
+        List<Note> notes = new ArrayList<Note>();
+        for(Merger merger : mergers) {
+            //List<Note> noteByMerger = noteRepository.findByMerger(merger);
+            notes.addAll(noteRepository.findByMerger(merger));
+        }
+        return notes;
     }
 
 
