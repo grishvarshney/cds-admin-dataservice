@@ -140,8 +140,35 @@ public class NoteResource {
             //List<Note> noteByMerger = noteRepository.findByMerger(merger);
             notes.addAll(noteRepository.findByMerger(merger));
         }
+        notes.addAll(noteRepository.findAllNullMerger());
         return notes;
     }
+
+    @GetMapping("/transfer/getNotesByCustomerTo/{customerId}/{systemId}")
+    public  List<Note> getTransferNotesByCustomerTo(@PathVariable String customerId, @PathVariable String systemId) {
+        log.debug("REST request to get Note : {}", customerId);
+        List<Transfer> transfers = transferRepo.findByCustomerTo(customerId, systemId);
+        List<Note> notes = new ArrayList<Note>();
+        for(Transfer transfer : transfers) {
+            notes.addAll(noteRepository.findByTransfer(transfer));
+        }
+        return notes;
+    }
+
+    @GetMapping("/transfer/getNotesByCustomerFrom/{customerId}/{systemId}")
+    public  List<Note> getTransferNotesByCustomerFrom(@PathVariable String customerId, @PathVariable String systemId) {
+        log.debug("REST request to get Note : {}", customerId);
+        //Fetch Transfer's where supplied customer is in CUSTOMET_TO column
+        List<Transfer> transfers = transferRepo.findByCustomerTo(customerId, systemId);
+        List<Note> notes = new ArrayList<Note>();
+        for(Transfer transfer : transfers) {
+            //List<Note> noteByMerger = noteRepository.findByMerger(merger);
+            notes.addAll(noteRepository.findByTransfer(transfer));
+        }
+        notes.addAll(noteRepository.findAllNullTrarnsfer());
+        return notes;
+    }
+
 
 
     @GetMapping("/getNotesByMerger/{id}")

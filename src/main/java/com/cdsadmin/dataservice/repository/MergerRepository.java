@@ -23,7 +23,7 @@ public interface MergerRepository extends JpaRepository<Merger, Long> {
 
     @Query(value = "SELECT * FROM Merger m WHERE m.CUSTOMER_FROM  = :customerFrom and m.SYSTEMS_ID  = :SystemId ",
             nativeQuery = true)
-        List<Merger> findByCustomerFrom(@Param("customerFrom") String customerTo,
+        List<Merger> findByCustomerFrom(@Param("customerFrom") String customerFrom,
                                                     @Param("SystemId") String SystemId);
 
     @Query(value = "SELECT * FROM Merger m WHERE m.CUSTOMER_TO  = :customerTo and m.SYSTEMS_ID  = :SystemId ",

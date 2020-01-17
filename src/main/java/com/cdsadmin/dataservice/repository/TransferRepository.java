@@ -21,4 +21,14 @@ public interface TransferRepository extends JpaRepository<Transfer, Long> {
                                                 @Param("customerTo") String customerTo,
                                                 @Param("SystemId") String SystemId);
 
+    @Query(value = "SELECT * FROM TRANSFER m WHERE m.CUSTOMER_FROM  = :customerFrom and m.SYSTEMS_ID  = :SystemId ",
+            nativeQuery = true)
+        List<Transfer> findByCustomerFrom(@Param("customerFrom") String customerTo,
+                                                    @Param("SystemId") String SystemId);
+
+    @Query(value = "SELECT * FROM TRANSFER m WHERE m.CUSTOMER_TO  = :customerTo and m.SYSTEMS_ID  = :SystemId ",
+            nativeQuery = true)
+        List<Transfer> findByCustomerTo(@Param("customerTo") String customerTo,
+                                                    @Param("SystemId") String SystemId);
+
 }
