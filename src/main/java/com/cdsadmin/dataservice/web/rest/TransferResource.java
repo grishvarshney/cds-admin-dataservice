@@ -1,7 +1,9 @@
 package com.cdsadmin.dataservice.web.rest;
 
 import com.cdsadmin.dataservice.domain.Merger;
+import com.cdsadmin.dataservice.domain.Note;
 import com.cdsadmin.dataservice.domain.Transfer;
+import com.cdsadmin.dataservice.repository.NoteRepository;
 import com.cdsadmin.dataservice.repository.TransferRepository;
 import com.cdsadmin.dataservice.web.rest.errors.BadRequestAlertException;
 
@@ -9,6 +11,7 @@ import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +22,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing {@link com.cdsadmin.dataservice.domain.Transfer}.
@@ -36,6 +40,9 @@ public class TransferResource {
     private String applicationName;
 
     private final TransferRepository transferRepository;
+
+    @Autowired
+    private NoteRepository noteRepository;
 
     public TransferResource(TransferRepository transferRepository) {
         this.transferRepository = transferRepository;
@@ -55,6 +62,13 @@ public class TransferResource {
             throw new BadRequestAlertException("A new transfer cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Transfer result = transferRepository.save(transfer);
+        Set<Note> notes = transfer.getNotes();
+        for(Note note:notes) {
+        	Optional<Note> noteFromId = noteRepository.findById(note.getId());
+        	noteFromId.get().setTransfer(transfer);
+        	Note noteResult = noteRepository.save(noteFromId.get());
+        }
+
         return ResponseEntity.created(new URI("/api/transfers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
