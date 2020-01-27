@@ -41,7 +41,7 @@ public class NoteResource {
     private String applicationName;
 
     private final NoteRepository noteRepository;
-
+    
     @Autowired
     MergerRepository mergerRepo;
 
